@@ -32,11 +32,13 @@ const MyPage = () => {
     return () => clearInterval(intervalId);
   }, []);
 
+  const handleReload = () => {
+    window.location.reload();
+  };
+
   return (
     <div>
       <h1>Build ID: {process.env.NEXT_PUBLIC_BUILD_ID}</h1>
-      <p>hello</p>
-
       {isNewVersion && (
         <div
           style={{
@@ -47,6 +49,19 @@ const MyPage = () => {
           }}
         >
           <p>A new version is available! Please reload the page to continue.</p>
+          <button
+            onClick={handleReload}
+            style={{
+              padding: "5px 10px",
+              backgroundColor: "#007bff",
+              color: "white",
+              border: "none",
+              borderRadius: "5px",
+              cursor: "pointer",
+            }}
+          >
+            Reload
+          </button>
         </div>
       )}
     </div>
