@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
     return Date.now().toString();
   },
   env: {
-    NEXT_PUBLIC_BUILD_ID: process.env.BUILD_ID || Date.now().toString(),
+    NEXT_PUBLIC_BUILD_ID: process.env.BUILD_ID,
   },
 };
 
