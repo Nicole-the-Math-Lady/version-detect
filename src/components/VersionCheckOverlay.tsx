@@ -19,32 +19,47 @@ const VersionCheckOverlay = () => {
         left: 0,
         right: 0,
         bottom: 0,
-        backgroundColor: "rgba(0, 0, 0, 0.7)", // Full-screen dark overlay
-        color: "white",
+        backgroundColor: "rgba(0, 0, 0, 0.5)", // Lighten the dark overlay
+        color: "#333",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
         zIndex: 9999, // Ensure the overlay is above all other content
-        padding: "20px",
+        padding: "40px 20px",
         textAlign: "center",
+        borderRadius: "10px",
       }}
     >
-      <p>A new version is available! Please reload the page to continue.</p>
+      <div
+        style={{ fontSize: "22px", marginBottom: "20px", fontWeight: "bold" }}
+      >
+        A new version of this page is available
+      </div>
+      <p style={{ fontSize: "18px", marginBottom: "20px" }}>
+        Refresh now to view the latest updates and features.
+      </p>
       <button
         onClick={handleReload}
         style={{
-          padding: "10px 20px",
+          padding: "12px 30px",
           backgroundColor: "#007bff",
           color: "white",
           border: "none",
-          borderRadius: "5px",
+          borderRadius: "8px",
           cursor: "pointer",
-          fontSize: "16px",
-          marginTop: "20px",
+          fontSize: "18px",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+          transition: "background-color 0.3s ease",
         }}
+        onMouseEnter={(e) =>
+          (e.currentTarget.style.backgroundColor = "#0056b3")
+        }
+        onMouseLeave={(e) =>
+          (e.currentTarget.style.backgroundColor = "#007bff")
+        }
       >
-        Reload
+        Refresh Page
       </button>
     </div>
   );
