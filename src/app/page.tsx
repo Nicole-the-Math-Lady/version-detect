@@ -24,18 +24,6 @@ const MyPage = () => {
     fetchVersion();
   }, []);
 
-  useEffect(() => {
-    if (isNewVersion) {
-      const intervalId = setInterval(() => {
-        // Reload the page every 5 seconds if the new version is detected
-        window.location.reload();
-      }, 5000);
-
-      // Clear the interval if the component is unmounted
-      return () => clearInterval(intervalId);
-    }
-  }, [isNewVersion]);
-
   return (
     <div>
       <h1>Build ID: {process.env.NEXT_PUBLIC_BUILD_ID}</h1>
@@ -50,9 +38,7 @@ const MyPage = () => {
             marginTop: "20px",
           }}
         >
-          <p>
-            A new version is available! The page will reload every 5 seconds.
-          </p>
+          <p>A new version is available! Please reload the page to continue.</p>
         </div>
       )}
     </div>
