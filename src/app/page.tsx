@@ -5,7 +5,6 @@ const MyPage = () => {
   const [isNewVersion, setIsNewVersion] = useState(false);
 
   useEffect(() => {
-    // Fetch the version from the API
     const fetchVersion = async () => {
       try {
         const response = await fetch("/api/version");
@@ -21,7 +20,16 @@ const MyPage = () => {
       }
     };
 
+    // Fetch the version immediately on mount
     fetchVersion();
+
+    // Set an interval to call the API every 5 seconds
+    const intervalId = setInterval(() => {
+      fetchVersion();
+    }, 5000);
+
+    // Clean up the interval on component unmount
+    return () => clearInterval(intervalId);
   }, []);
 
   return (
