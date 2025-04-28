@@ -4,6 +4,7 @@ const MyPage = () => {
   return (
     <div>
       <h1>Build ID: {process.env.NEXT_PUBLIC_BUILD_ID}</h1>
+      <p>hello</p>
     </div>
   );
 };
