@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   generateBuildId: async () => {
-    return Date.now().toString();
+    return process.env.GIT_HASH?.toString() || "1.0";
   },
   env: {
     NEXT_PUBLIC_BUILD_ID: process.env.BUILD_ID,
