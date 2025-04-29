@@ -1,5 +1,5 @@
 const MyPage = () => {
-  return <div>My Page update 2</div>;
+  return <div>My Page update 3</div>;
 };
 
 export default MyPage;
