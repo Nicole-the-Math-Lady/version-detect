@@ -8,6 +8,8 @@ import React, {
   ReactNode,
 } from "react";
 
+import version from "../../public/version.json"; //TODO
+
 interface VersionContextType {
   isNewVersion: boolean;
 }
@@ -34,11 +36,13 @@ export const VersionProvider: React.FC<VersionProviderProps> = ({
   useEffect(() => {
     const fetchVersion = async () => {
       try {
-        const response = await fetch("/api/version");
-        const data: { version: string } = await response.json();
-
+        const response = await fetch("/version.json");
+        const data: { BUILD_ID: string } = await response.json();
+        console.log("data", data);
         // Compare the fetched version with the build ID
-        if (data.version !== process.env.NEXT_PUBLIC_BUILD_ID) {
+        if (data.BUILD_ID !== version.BUILD_ID) {
+          console.log("data.version", data.BUILD_ID);
+          console.log("version.BUILD_ID", version.BUILD_ID);
           setIsNewVersion(true);
         }
       } catch (error) {
